@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { withRouter } from 'react-router-dom'
 import { Form, Icon, Input, Button, Checkbox } from 'antd'
 import style from './LoginForm.module.css'
 
@@ -10,6 +11,7 @@ class LoginForm extends Component {
     this.props.form.validateFields((err, values) => {
       if (!err) {
         console.log('Received values of form: ', values)
+        this.props.history.push('/home')
       }
     })
   }
@@ -51,4 +53,4 @@ class LoginForm extends Component {
   }
 }
 
-export default Form.create()(LoginForm)
+export default withRouter(Form.create()(LoginForm))
