@@ -1,0 +1,23 @@
+{
+  "name": "media-management",
+  "author": "xu_yang",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "server": "DEBUG=media-management:* nodemon ./bin/www",
+    "client": "cd client && yarn start",
+    "start": "concurrently \"npm run server\" \"npm run client\"",
+    "format": "prettier --write \"**/*.js\""
+  },
+  "dependencies": {
+    "cookie-parser": "~1.4.3",
+    "debug": "~2.6.9",
+    "express": "~4.16.0",
+    "morgan": "~1.9.0"
+  },
+  "devDependencies": {
+    "concurrently": "^4.1.0",
+    "nodemon": "^1.18.9",
+    "prettier": "1.15.3"
+  }
+}
