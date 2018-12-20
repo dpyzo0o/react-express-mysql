@@ -13,12 +13,37 @@ class Routes extends Component {
             <Redirect to="/login" />
           </Route>
           <Route exact path="/login" component={Login} />
-          <Route exact path="/home" component={Home} />
+          <AuthRoute exact path="/home" component={Home} />
           <Route component={NoMatch} />
         </Switch>
       </Router>
     )
   }
+}
+
+function AuthRoute({ component: Component, ...rest }) {
+  return (
+    <Route
+      {...rest}
+      render={props => {
+        const user = localStorage.getItem('userName')
+        const pass = localStorage.getItem('password')
+        if (user === 'dpyzo0o' && pass === 'robert940121') {
+          localStorage.clear()
+          return <Component {...props} />
+        } else {
+          return (
+            <Redirect
+              to={{
+                pathname: '/login',
+                state: { from: props.location }
+              }}
+            />
+          )
+        }
+      }}
+    />
+  )
 }
 
 export default Routes

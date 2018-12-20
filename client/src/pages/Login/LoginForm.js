@@ -11,6 +11,8 @@ class LoginForm extends Component {
     this.props.form.validateFields((err, values) => {
       if (!err) {
         console.log('Received values of form: ', values)
+        localStorage.setItem('userName', values.userName)
+        localStorage.setItem('password', values.password)
         this.props.history.push('/home')
       }
     })
