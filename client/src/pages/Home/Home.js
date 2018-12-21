@@ -11,9 +11,9 @@ const columns = [
     width: 200
   },
   {
-    title: '密码',
-    dataIndex: 'password',
-    key: 'password',
+    title: '性别',
+    dataIndex: 'gender',
+    key: 'gender',
     align: 'center',
     width: 200
   },

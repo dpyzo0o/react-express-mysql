@@ -3,7 +3,7 @@ const router = express.Router()
 const db = require('../db')
 
 router.get('/test', (req, res) => {
-  db.query('SELECT * FROM user_collection', (err, result) => {
+  db.query('SELECT id, email, gender, permission FROM user_collection', (err, result) => {
     if (err) throw err
     res.json(result)
   })
