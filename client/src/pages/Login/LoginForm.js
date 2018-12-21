@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { withRouter } from 'react-router-dom'
-import { Form, Icon, Input, Button, Checkbox } from 'antd'
+import { Form, Icon, Input, Button, Checkbox, message } from 'antd'
 import style from './LoginForm.module.css'
 
 const FormItem = Form.Item
@@ -10,10 +10,21 @@ class LoginForm extends Component {
     e.preventDefault()
     this.props.form.validateFields((err, values) => {
       if (!err) {
-        console.log('Received values of form: ', values)
-        localStorage.setItem('userName', values.userName)
-        localStorage.setItem('password', values.password)
-        this.props.history.push('/home')
+        console.log(values)
+        fetch('/api/authenticate', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify(values)
+        }).then(res => {
+          // login success
+          if (res.status === 200) {
+            this.props.history.push('/home')
+          } else {
+            message.error('邮箱或密码不正确')
+          }
+        })
       }
     })
   }
@@ -23,9 +34,9 @@ class LoginForm extends Component {
     return (
       <Form onSubmit={this.handleSubmit} className={style['login-form']}>
         <FormItem>
-          {getFieldDecorator('userName', {
-            rules: [{ required: true, message: '请输入用户名！' }]
-          })(<Input prefix={<Icon type="user" style={{ color: 'rgba(0,0,0,.25)' }} />} placeholder="用户名" />)}
+          {getFieldDecorator('email', {
+            rules: [{ required: true, message: '请输入邮箱！' }]
+          })(<Input prefix={<Icon type="mail" style={{ color: 'rgba(0,0,0,.25)' }} />} placeholder="邮箱" />)}
         </FormItem>
         <FormItem>
           {getFieldDecorator('password', {

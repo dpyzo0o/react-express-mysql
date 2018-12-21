@@ -47,7 +47,7 @@ router.post('/register', (req, res, next) => {
   })
 })
 
-router.post('/authenticate', (req, res, next) => {
+router.post('/authenticate', (req, res) => {
   const { email, password } = req.body
   const sql = 'SELECT * FROM users WHERE email = ' + mysql.escape(email)
   db.query(sql, (err, result) => {
