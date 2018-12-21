@@ -4,16 +4,23 @@ import Layout from '../../components/Layout'
 
 const columns = [
   {
-    title: '姓名',
-    dataIndex: 'name',
-    key: 'name',
+    title: '邮箱',
+    dataIndex: 'email',
+    key: 'email',
     align: 'center',
     width: 200
   },
   {
-    title: '地址',
-    dataIndex: 'address',
-    key: 'address',
+    title: '密码',
+    dataIndex: 'password',
+    key: 'password',
+    align: 'center',
+    width: 200
+  },
+  {
+    title: '权限',
+    dataIndex: 'permission',
+    key: 'permission',
     align: 'center',
     width: 200
   }
@@ -41,7 +48,7 @@ class Home extends Component {
               hideOnSinglePage: true,
               defaultPageSize: 5
             }}
-            rowKey={record => record.name}
+            rowKey={record => record.id}
             columns={columns}
             dataSource={userList}
           />
