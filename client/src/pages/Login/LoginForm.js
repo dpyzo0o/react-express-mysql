@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { withRouter } from 'react-router-dom'
 import { Form, Icon, Input, Button, Checkbox, message } from 'antd'
-import style from './LoginForm.module.css'
+import style from './Login.module.css'
 
 const FormItem = Form.Item
 
@@ -10,7 +10,6 @@ class LoginForm extends Component {
     e.preventDefault()
     this.props.form.validateFields((err, values) => {
       if (!err) {
-        console.log(values)
         fetch('/api/authenticate', {
           method: 'POST',
           headers: {
