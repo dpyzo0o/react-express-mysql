@@ -25,7 +25,3 @@ A scaffold with basic user authentication.
 ## Notes
 
 I used [ant-design](https://github.com/ant-design/ant-design) as UI framework. If you don't want to import all styles of antd, you have to do [some extra work](https://ant.design/docs/react/use-with-create-react-app#Advanced-Guides). [react-app-reqired](https://github.com/timarney/react-app-rewired) was and is still the recommended way by antd to achieve this. However, react-app-wired doesn't support create-react-app 2.0 anymore, see [2.0 Discussion](https://github.com/timarney/react-app-rewired/issues/162). I go for [craco](https://github.com/sharegate/craco), which is pretty easy to use.
-
-## TODO
-
-- [ ] add register page

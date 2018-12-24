@@ -1,26 +1,27 @@
 import React, { Component } from 'react'
-import { Form, Icon, Input, Button, Checkbox, message } from 'antd'
-import style from './Login.module.css'
+import { Form, Icon, Input, Button, message } from 'antd'
+import style from '../Login/Login.module.css'
 
 const FormItem = Form.Item
 
-class LoginForm extends Component {
+class RegisterForm extends Component {
   handleSubmit = e => {
     e.preventDefault()
     this.props.form.validateFields((err, values) => {
       if (!err) {
-        fetch('/api/authenticate', {
+        fetch('/api/register', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json'
           },
           body: JSON.stringify(values)
         }).then(res => {
-          // login success
+          // register success
           if (res.status === 200) {
-            this.props.onLoginSuccess()
+            this.props.onRegisterSuccess()
+            message.success('Register succuss')
           } else {
-            message.error('Incorrect email or password')
+            message.error('Email exists')
           }
         })
       }
@@ -48,21 +49,13 @@ class LoginForm extends Component {
           )}
         </FormItem>
         <FormItem>
-          {getFieldDecorator('remember', {
-            valuePropName: 'checked',
-            initialValue: true
-          })(<Checkbox>Remember me</Checkbox>)}
-          <a className={style['login-form-forgot']} href="/forgot">
-            Forgot password
-          </a>
           <Button type="primary" htmlType="submit" className={style['login-form-button']}>
-            Login in
+            Register
           </Button>
-          Or <a href="/register">register now!</a>
-        </FormItem>{' '}
+        </FormItem>
       </Form>
     )
   }
 }
 
-export default Form.create()(LoginForm)
+export default Form.create()(RegisterForm)

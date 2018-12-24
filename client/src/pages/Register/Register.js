@@ -1,29 +1,29 @@
 import React, { Component } from 'react'
 import { Redirect } from 'react-router-dom'
-import LoginForm from './LoginForm'
+import RegisterForm from './RegisterForm'
 import Layout from '../../components/Layout'
-import style from './Login.module.css'
+import style from '../Login/Login.module.css'
 
-class Login extends Component {
+class Register extends Component {
   state = {
     redirectToReferrer: false
   }
 
-  handleLoginSuccess = () => this.setState({ redirectToReferrer: true })
+  handleRegisterSuccess = () => this.setState({ redirectToReferrer: true })
 
   render() {
     const { redirectToReferrer } = this.state
 
-    if (redirectToReferrer) return <Redirect to="/" />
+    if (redirectToReferrer) return <Redirect to="/login" />
 
     return (
       <Layout>
         <div className={style['login-form-wrapper']}>
-          <LoginForm onLoginSuccess={this.handleLoginSuccess} />
+          <RegisterForm onRegisterSuccess={this.handleRegisterSuccess} />
         </div>
       </Layout>
     )
   }
 }
 
-export default Login
+export default Register

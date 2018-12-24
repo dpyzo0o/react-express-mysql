@@ -9,7 +9,7 @@ const db = require('../db')
 const saltRounds = 10
 
 router.get('/test', (req, res) => {
-  db.query('SELECT id, email, gender, password, permission FROM users', (err, result) => {
+  db.query('SELECT id, email, gender, permission FROM users', (err, result) => {
     if (err) throw err
     res.json(result)
   })
@@ -32,7 +32,9 @@ router.get('/checkAuth', (req, res) => {
 })
 
 router.post('/register', (req, res, next) => {
-  const { email, password, gender, permission } = req.body
+  const { email, password } = req.body
+  const gender = Math.random() < 0.5 ? 'male' : 'female'
+  const permission = Math.random() < 0.5 ? 'edit' : 'query'
   bcrypt.hash(password, saltRounds, (err, hashed) => {
     if (err) {
       next(err)
@@ -42,6 +44,8 @@ router.post('/register', (req, res, next) => {
     db.query('INSERT INTO users (email, password, gender, permission) VALUES ?', [values], (err, result) => {
       if (err) {
         res.status(409).send('Email already exists')
+      } else {
+        res.sendStatus(200)
       }
     })
   })
