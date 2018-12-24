@@ -16,7 +16,7 @@ function withAuth(ComponentToAuth) {
           this.setState({ loading: false })
         } else {
           this.setState({ loading: false, redirect: true })
-          message.error('未登录或登陆已过期')
+          message.error('Not logged in or expired')
         }
       })
     }

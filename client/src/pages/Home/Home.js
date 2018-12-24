@@ -4,21 +4,21 @@ import Layout from '../../components/Layout'
 
 const columns = [
   {
-    title: '邮箱',
+    title: 'Email',
     dataIndex: 'email',
     key: 'email',
     align: 'center',
     width: 300
   },
   {
-    title: '性别',
+    title: 'Gender',
     dataIndex: 'gender',
     key: 'gender',
     align: 'center',
     width: 200
   },
   {
-    title: '权限',
+    title: 'Permission',
     dataIndex: 'permission',
     key: 'permission',
     align: 'center',

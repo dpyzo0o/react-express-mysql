@@ -21,7 +21,7 @@ class LoginForm extends Component {
           if (res.status === 200) {
             this.props.onLoginSuccess()
           } else {
-            message.error('邮箱或密码不正确')
+            message.error('Incorrect email or password')
           }
         })
       }
@@ -34,17 +34,17 @@ class LoginForm extends Component {
       <Form onSubmit={this.handleSubmit} className={style['login-form']}>
         <FormItem>
           {getFieldDecorator('email', {
-            rules: [{ required: true, message: '请输入邮箱！' }]
-          })(<Input prefix={<Icon type="mail" style={{ color: 'rgba(0,0,0,.25)' }} />} placeholder="邮箱" />)}
+            rules: [{ required: true, message: 'Please input your email!' }]
+          })(<Input prefix={<Icon type="mail" style={{ color: 'rgba(0,0,0,.25)' }} />} placeholder="Email" />)}
         </FormItem>
         <FormItem>
           {getFieldDecorator('password', {
-            rules: [{ required: true, message: '请输入密码！' }]
+            rules: [{ required: true, message: 'Please input your password!' }]
           })(
             <Input
               prefix={<Icon type="lock" style={{ color: 'rgba(0,0,0,.25)' }} />}
               type="password"
-              placeholder="密码"
+              placeholder="Password"
             />
           )}
         </FormItem>
@@ -52,12 +52,12 @@ class LoginForm extends Component {
           {getFieldDecorator('remember', {
             valuePropName: 'checked',
             initialValue: true
-          })(<Checkbox>记住我</Checkbox>)}
+          })(<Checkbox>Remember me</Checkbox>)}
           <a className={style['login-form-forgot']} href="/forgot">
-            忘记密码
+            Forgot password
           </a>
           <Button type="primary" htmlType="submit" className={style['login-form-button']}>
-            登陆
+            Login in
           </Button>
         </FormItem>
       </Form>
