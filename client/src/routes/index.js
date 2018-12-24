@@ -33,7 +33,7 @@ function withAuth(ComponentToAuth) {
           this.setState({ loading: false })
         } else {
           this.setState({ loading: false, redirect: true })
-          message.error('登陆已过期, 请重新登陆')
+          message.error('未登录或登陆已过期')
         }
       })
     }

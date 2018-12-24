@@ -20,7 +20,7 @@ class LoginForm extends Component {
         }).then(res => {
           // login success
           if (res.status === 200) {
-            this.props.history.push('/')
+            this.props.onLoginSuccess()
           } else {
             message.error('邮箱或密码不正确')
           }
