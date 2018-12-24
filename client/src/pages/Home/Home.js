@@ -8,7 +8,7 @@ const columns = [
     dataIndex: 'email',
     key: 'email',
     align: 'center',
-    width: 200
+    width: 300
   },
   {
     title: '性别',
@@ -46,7 +46,7 @@ class Home extends Component {
           <Table
             pagination={{
               hideOnSinglePage: true,
-              defaultPageSize: 5
+              defaultPageSize: 50
             }}
             rowKey={record => record.id}
             columns={columns}
