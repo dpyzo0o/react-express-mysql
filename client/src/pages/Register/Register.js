@@ -2,7 +2,6 @@ import React, { Component } from 'react'
 import { Redirect } from 'react-router-dom'
 import RegisterForm from './RegisterForm'
 import Layout from '../../components/Layout'
-import style from '../Login/Login.module.css'
 
 class Register extends Component {
   state = {
@@ -18,7 +17,7 @@ class Register extends Component {
 
     return (
       <Layout>
-        <div className={style['login-form-wrapper']}>
+        <div style={{ padding: '25px 25px 5px', boxShadow: '0px 0px 10px #ddd' }}>
           <RegisterForm onRegisterSuccess={this.handleRegisterSuccess} />
         </div>
       </Layout>

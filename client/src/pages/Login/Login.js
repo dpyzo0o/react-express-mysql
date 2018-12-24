@@ -2,7 +2,6 @@ import React, { Component } from 'react'
 import { Redirect } from 'react-router-dom'
 import LoginForm from './LoginForm'
 import Layout from '../../components/Layout'
-import style from './Login.module.css'
 
 class Login extends Component {
   state = {
@@ -18,7 +17,7 @@ class Login extends Component {
 
     return (
       <Layout>
-        <div className={style['login-form-wrapper']}>
+        <div style={{ padding: '25px 25px 5px', boxShadow: '0px 0px 10px #ddd' }}>
           <LoginForm onLoginSuccess={this.handleLoginSuccess} />
         </div>
       </Layout>
